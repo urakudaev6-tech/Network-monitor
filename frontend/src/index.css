@@ -6,3 +6,36 @@ body {
   @apply bg-slate-50 text-slate-900;
   font-family: system-ui, -apple-system, sans-serif;
 }
+
+/* NM_PORTFOLIO_SHELL_V1 — presentation styles only; no functional changes */
+:root { color-scheme: light; }
+body { margin: 0; background: #f3f6fb; color: #17233c; }
+.nm-app-shell { min-height: 100vh; display: flex; }
+.nm-sidebar { position: sticky; top: 0; height: 100vh; flex: 0 0 244px; background: #101b32; color: #dce5f5; display: flex; flex-direction: column; padding: 28px 15px 18px; box-sizing: border-box; z-index: 10; }
+.nm-brand { display: flex; align-items: center; gap: 12px; font-size: 17px; font-weight: 750; letter-spacing: -.5px; padding: 4px 11px 33px; white-space: nowrap; }
+.nm-brand-icon { display: grid; place-items: center; width: 35px; height: 35px; border-radius: 11px; background: #2563eb; color: white; font-size: 25px; }
+.nm-brand-accent { color: #75a8ff; }
+.nm-brand small { display: block; font-size: 9px; letter-spacing: 1.9px; font-weight: 600; color: #8292ae; margin-top: 5px; }
+.nm-sidebar-label { color: #71839f; font-size: 10px; font-weight: 750; letter-spacing: 1.6px; padding: 0 13px 12px; }
+.nm-sidebar-nav { display: grid; gap: 5px; }
+.nm-nav-link { display: flex; align-items: center; gap: 13px; color: #afbdd4; text-decoration: none; padding: 12px 14px; border-radius: 10px; font-size: 13px; font-weight: 600; transition: background .15s, color .15s; }
+.nm-nav-link > span { width: 20px; font-size: 19px; line-height: 1; text-align: center; }
+.nm-nav-link:hover { background: #1d2c48; color: white; }
+.nm-nav-link.active { background: #243c67; color: #fff; box-shadow: inset 3px 0 #69a0ff; }
+.nm-sidebar-footer { margin-top: auto; padding: 16px 12px 0; border-top: 1px solid #27354d; font-size: 12px; color: #b6c6db; }
+.nm-sidebar-footer small { display: block; margin: 7px 0 0 16px; font-size: 11px; color: #7889a5; }
+.nm-live-dot { display: inline-block; width: 8px; height: 8px; margin-right: 7px; border-radius: 50%; background: #34d399; box-shadow: 0 0 0 3px #34d39922; }
+.nm-workspace { min-width: 0; flex: 1; }
+.nm-topbar { height: 80px; padding: 0 35px; border-bottom: 1px solid #e3eaf3; background: #fff; display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+.nm-topbar-kicker { display: block; color: #8794a8; font-size: 10px; letter-spacing: 1.6px; font-weight: 700; margin-bottom: 5px; }
+.nm-topbar strong { font-size: 17px; font-weight: 700; }
+.nm-topbar-version { font-size: 12px; color: #73839c; background: #f2f6fc; border: 1px solid #e4eaf3; border-radius: 999px; padding: 8px 13px; white-space: nowrap; }
+.nm-page-content { max-width: 1540px; margin: 0 auto; padding: 8px 18px 36px; }
+.nm-page-content > * { max-width: 100%; }
+.nm-page-content .bg-white { border: 1px solid #e4eaf2; }
+.nm-page-content .shadow { box-shadow: 0 3px 18px rgba(25,43,77,.045); }
+.nm-page-content table { border-collapse: collapse; }
+.nm-page-content table thead { background: #edf3fa; }
+.nm-page-content input:focus-visible, .nm-page-content select:focus-visible, .nm-page-content button:focus-visible, .nm-nav-link:focus-visible { outline: 2px solid #3b82f6; outline-offset: 2px; }
+@media (max-width: 960px) { .nm-sidebar { flex-basis: 204px; } .nm-brand { font-size: 14px; } .nm-topbar { padding: 0 20px; } }
+@media (max-width: 700px) { .nm-app-shell { display: block; } .nm-sidebar { position: relative; width: 100%; height: auto; padding: 12px; } .nm-brand { padding: 3px 8px 12px; } .nm-sidebar-label, .nm-sidebar-footer { display: none; } .nm-sidebar-nav { display: flex; overflow-x: auto; gap: 5px; padding-bottom: 3px; } .nm-nav-link { white-space: nowrap; padding: 9px 12px; font-size: 12px; } .nm-topbar { height: 65px; padding: 0 16px; } .nm-topbar-version { display: none; } .nm-page-content { padding: 4px 8px 24px; } }

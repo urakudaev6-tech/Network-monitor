@@ -34,15 +34,13 @@ export function TargetDetails() {
   if (target.isPending) {
     return (
       <div className="max-w-4xl mx-auto p-6">
-        Loading target {targetId}...
-        <p>Query: {target.status}, Fetch: {target.fetchStatus}</p>
-        <p>Error: "none"</p>
+        Загрузка устройства...
       </div>
     );
   }
 
   if (!target.data) {
-    return <div>?????? ?????????? ??????????.</div>;
+    return <div className="p-6 text-slate-600">Устройство не найдено.</div>;
   }
 
   const t = target.data;
