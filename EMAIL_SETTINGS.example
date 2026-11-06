@@ -1,0 +1,8 @@
+# Add these lines to EXISTING .env; do not replace SCAN_ALLOWED_CIDRS.
+REPORT_SUBNET=192.168.100.0/24
+REPORT_TIMEOUT=0.8
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=465
+SMTP_USER=your.address@gmail.com
+SMTP_APP_PASSWORD=your_google_app_password
+REPORT_RECIPIENT=your.address@gmail.com

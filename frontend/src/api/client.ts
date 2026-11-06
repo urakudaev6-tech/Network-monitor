@@ -1,6 +1,6 @@
 // Единая точка fetch. Никаких прямых fetch в компонентах.
 
-const API_URL = import.meta.env.VITE_API_URL ?? "http://127.0.0.1:8000";
+const API_URL = "/api"; // Same-origin Vite proxy: browser session cookie is included.
 
 export class ApiError extends Error {
   status: number;

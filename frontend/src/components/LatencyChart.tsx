@@ -1,3 +1,4 @@
+import { formatServerTime } from "../utils/serverTime";
 import {
   CartesianGrid,
   Line,
@@ -18,7 +19,7 @@ export function LatencyChart({ history }: Props) {
   const data = [...history]
     .reverse() // история приходит от новых к старым, для графика — наоборот
     .map((r) => ({
-      time: new Date(r.checked_at).toLocaleTimeString(),
+      time: formatServerTime(r.checked_at),
       ms: r.ms,
       ok: r.ok,
     }));

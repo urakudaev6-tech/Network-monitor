@@ -7,6 +7,7 @@
 from datetime import datetime, timezone
 from unittest.mock import patch
 
+import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine, event
 from sqlalchemy.orm import sessionmaker
@@ -36,7 +37,14 @@ def _make_factory(db_path):
                         expire_on_commit=False)
 
 
-def test_targets_and_history_survive_restart(tmp_path):
+def test_targets_and_history_survive_restart(tmp_path, monkeypatch):
+    # NM31_INTEGRATION_BG_ISOLATION_V1
+    # Test only persistence/restart behavior, not background network scanning.
+    # Prevent lingering threadpool scans from leaking into subsequent tests.
+    from app.config import settings
+    monkeypatch.setattr(settings, "auto_scan_enabled", False)
+    monkeypatch.setattr(settings, "scheduler_interval", 0)
+
     db_path = tmp_path / "integration.db"
 
     # --- Первый "запуск" ---
@@ -69,3 +77,13 @@ def test_targets_and_history_survive_restart(tmp_path):
         assert len(hist) == 1
         assert hist[0]["ok"] is True
         assert hist[0]["ms"] == 5.0
+
+# NM30_TEST_AUTH_ISOLATION_V1
+@pytest.fixture(autouse=True)
+def _legacy_api_without_auth(monkeypatch):
+    """Only these legacy API tests run without the optional security gateway.
+
+    Production security and tests in other modules are unaffected.
+    """
+    import app.security10 as security10
+    monkeypatch.setattr(security10, "config", lambda: None)

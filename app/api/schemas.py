@@ -54,3 +54,34 @@ class CheckResultResponse(BaseModel):
     error: str | None
     checked_at: str
     status_changed: bool
+
+class ScanRequest(BaseModel):
+    subnet: str = Field(min_length=3, max_length=43)
+    timeout: float = Field(default=0.8, ge=0.2, le=5.0, allow_inf_nan=False)
+    workers: int = Field(default=32, ge=1, le=64)
+    retries: int = Field(default=1, ge=0, le=2)
+
+
+class ScanDevice(BaseModel):
+    ip: str
+    detected: bool
+    mac: str | None
+    hostname: str | None
+    latency_ms: float | None
+    error: str | None
+
+
+class ScanResponse(BaseModel):
+    subnet: str
+    scanned_at: str
+    total: int
+    detected: int
+    not_detected: int
+    devices: list[ScanDevice]
+    warning: str
+
+
+class DeviceUpdate(BaseModel):
+    label: str = Field(default="", max_length=100)
+    category: Literal["pc", "server", "printer", "router", "phone", "iot", "other"] = "other"
+    notes: str = Field(default="", max_length=2000)

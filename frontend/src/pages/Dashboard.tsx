@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { AddTargetForm } from "../components/AddTargetForm";
 import { TargetTable } from "../components/TargetTable";
@@ -49,6 +50,7 @@ export function Dashboard() {
   return (
     <div className="max-w-5xl mx-auto p-6 space-y-6">
       <header className="flex items-center justify-between flex-wrap gap-3">
+        <Link to="/scanner" className="px-4 py-2 bg-blue-700 text-white rounded hover:bg-blue-800">Сканер сети →</Link>
         <h1 className="text-2xl font-bold">Network Monitor</h1>
         <button
           onClick={() => run.mutate()}

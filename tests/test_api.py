@@ -250,3 +250,13 @@ def test_add_target_host_is_stripped(client):
     r = client.post("/targets", json={"host": "  example.com  ", "type": "icmp"})
     assert r.status_code == 201
     assert r.json()["host"] == "example.com"
+
+# NM30_TEST_AUTH_ISOLATION_V1
+@pytest.fixture(autouse=True)
+def _legacy_api_without_auth(monkeypatch):
+    """Only these legacy API tests run without the optional security gateway.
+
+    Production security and tests in other modules are unaffected.
+    """
+    import app.security10 as security10
+    monkeypatch.setattr(security10, "config", lambda: None)

@@ -1,3 +1,4 @@
+import { formatServerDate } from "../utils/serverTime";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "../api/targets";
@@ -30,8 +31,18 @@ export function TargetDetails() {
     );
   }
 
-  if (target.isLoading || !target.data) {
-    return <div className="max-w-4xl mx-auto p-6">Загружаю...</div>;
+  if (target.isPending) {
+    return (
+      <div className="max-w-4xl mx-auto p-6">
+        Loading target {targetId}...
+        <p>Query: {target.status}, Fetch: {target.fetchStatus}</p>
+        <p>Error: "none"</p>
+      </div>
+    );
+  }
+
+  if (!target.data) {
+    return <div>?????? ?????????? ??????????.</div>;
   }
 
   const t = target.data;
@@ -77,7 +88,7 @@ export function TargetDetails() {
             <tbody>
               {hist.map((r) => (
                 <tr key={r.id} className="border-t">
-                  <td className="px-3 py-2">{new Date(r.checked_at).toLocaleString()}</td>
+                  <td className="px-3 py-2">{formatServerDate(r.checked_at)}</td>
                   <td className="px-3 py-2">
                     {r.ok ? <span className="text-green-700">да</span> :
                              <span className="text-red-700">нет</span>}
