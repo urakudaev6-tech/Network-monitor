@@ -1,4 +1,4 @@
-﻿# Network Monitor
+# Network Monitor
 
 [![CI](https://github.com/USERNAME/network-monitor/actions/workflows/ci.yml/badge.svg)](https://github.com/USERNAME/network-monitor/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.12-blue)
@@ -167,3 +167,32 @@ Existing screenshots are in `docs/`. Before adding new screenshots, remove or bl
 - [ ] Review the scanner's ICMP success criteria and results.
 - [ ] Restore or validate GitHub Actions CI before pushing.
 - [ ] Choose a license deliberately; no license is added automatically.
+
+<!-- PORTFOLIO_SCREENSHOTS_START -->
+
+## Screenshots / Скриншоты
+
+Network Monitor 4.1 — приложение для мониторинга сетевых узлов, сканирования разрешённых IPv4-подсетей и анализа истории обнаружения устройств.
+
+### Обзор / Monitoring dashboard
+![Monitoring dashboard](docs/screenshots/overview.png)
+
+### Сканер сети / Network scanner
+![Network scanner](docs/screenshots/scanner.png)
+
+### Реестр устройств / Device registry
+![Device registry](docs/screenshots/devices.png)
+
+### История сети / Network history
+![Network history](docs/screenshots/history.png)
+
+### Центр уведомлений / Alert center
+![Alert center](docs/screenshots/alerts.png)
+
+**Технологии:** Python, FastAPI, React, TypeScript, Vite, SQLite, Docker, GitHub Actions.
+
+**Проверки локальной сборки:** 166 автоматизированных тестов Python; сборка интерфейса через `npm --prefix frontend run build`.
+
+> Скриншоты сделаны на локальном экземпляре приложения. Часть сетевых идентификаторов скрыта перед публикацией.
+
+<!-- PORTFOLIO_SCREENSHOTS_END -->
